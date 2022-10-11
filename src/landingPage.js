@@ -1,46 +1,6 @@
 import michaelEatingCereal from './images/michael-eating-cereal.jpg';
 import createDiv from './jsUtility.js'
 
-function createHeader() {
-    const header = createDiv('header')
-    header.appendChild(headerLogo());
-    header.appendChild(headerTabs());
-    return header;
-}
-
-function headerLogo() {
-    const headerLogo = createDiv('headerLogo', `Mike's Cereal Shack`);
-    return headerLogo;
-}
-
-function headerTabs() {
-
-    const tabOptions = ['Home', 'Menu', 'Contact Us']
-
-    const headerTabs = createDiv('headerTabs');
-    const tabsList = document.createElement('ul');
-    tabsList.classList.add('tabsList')
-
-    tabOptions.forEach(tabLink => {
-        let li = document.createElement('li');
-        li.appendChild(document.createTextNode(tabLink));
-        li.classList.add('tabLink');
-        tabsList.appendChild(li);
-    });
-
-    headerTabs.appendChild(tabsList);
-
-    return headerTabs;
-
-}
-
-function createBody() {
-    const body = createDiv('bodyContainer')
-    body.appendChild(createWelcomePhoto());
-    body.appendChild(createInfoContainer());
-    return body;
-}
-
 function createInfoContainer() {
     const infoContainer = createDiv('infoContainer');
 
@@ -71,10 +31,9 @@ function createWelcomePhoto() {
     return photoDiv;
 }
 
-export default function generatePage() {
-    const pageElement = document.createElement('div');
-    pageElement.classList.add('mainContentContainer');
-    pageElement.appendChild(createHeader());
-    pageElement.appendChild(createBody());
-    return pageElement;
+export default function generateLandingPageContent() {
+    const landingPageContent = createDiv('landingPageContent');
+    landingPageContent.appendChild(createWelcomePhoto());
+    landingPageContent.appendChild(createInfoContainer());
+    return landingPageContent;
 };
