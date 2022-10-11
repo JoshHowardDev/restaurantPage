@@ -1,5 +1,5 @@
+import './style.css'
+import './cssReset.css'
 import generatePage from './landingPage.js';
 
-const mainContentContainer = document.querySelector('#content');
-
-mainContentContainer.appendChild(generatePage());
+document.querySelector('body').appendChild(generatePage());
