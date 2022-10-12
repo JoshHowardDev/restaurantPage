@@ -1,14 +1,21 @@
 import michaelEatingCereal from './images/michael-eating-cereal.png';
-import createDiv from './jsUtility.js';
+import restaurantInterior1 from './images/restaurantInterior1.png'
+import createEl from './jsUtility.js';
 
-function createInfoContainer() {
-    const infoContainer = createDiv('infoContainer');
+//About Us Info
+function createaboutUsDiv() {
+    const aboutUsDiv = createEl.div('aboutUsDiv');
+    aboutUsDiv.appendChild(createWelcomePhoto());
+    aboutUsDiv.appendChild(createAboutUsContainer());
+    return aboutUsDiv;
+}
 
+function createAboutUsContainer() {
     const greetingSpan = document.createElement('span');
     greetingSpan.innerText = `Welcome to Mike's Cereal Shack!`;
     greetingSpan.classList.add('greetingSpan')
 
-    const bioDiv = createDiv('bioDiv')
+    const bioDiv = createEl.div('bioDiv')
     
     const bioSpan1 = document.createElement('span');
     bioSpan1.classList.add('bioSpan1')
@@ -17,7 +24,7 @@ function createInfoContainer() {
     const bioSpan2 = document.createElement('span');
     bioSpan2.classList.add('bioSpan2')
     bioSpan2.innerText = `If you are tired of your friends and family avoiding your calls and declining your social invitations, then Mike's Cereal Shack is the place for you.
-    
+
         Come enjoy a bowl at one of our family-style tables. Or sit at the high tops where you can share and bond with other like-minded cereal-lovers.`
         
     const bioSpan3 = document.createElement('span');
@@ -28,9 +35,10 @@ function createInfoContainer() {
     bioDiv.appendChild(bioSpan2)
     bioDiv.appendChild(bioSpan3)
 
-    infoContainer.appendChild(bioDiv);
+    const aboutUsDetails = createEl.div('aboutUsDetailsDiv');
+    aboutUsDetails.appendChild(bioDiv);
 
-    return infoContainer;
+    return aboutUsDetails;
 }
 
 function createWelcomePhoto() {
@@ -38,14 +46,42 @@ function createWelcomePhoto() {
     photo.setAttribute('src', michaelEatingCereal);
     photo.setAttribute('alt', 'Michael Eating Cereal');
 
-    const photoDiv = document.createElement('div');
+    const photoDiv = createEl.div('aboutUsPhotoDiv');
     photoDiv.appendChild(photo);
     return photoDiv;
 }
 
+
+//Locations Info
+function createLocationsInfoDiv() {
+    const locationsInfoDiv = createEl.div('locationsInfoDiv');
+    locationsInfoDiv.appendChild(createLocationsInfoDetails());
+    locationsInfoDiv.appendChild(createLocationsInfoPhoto());
+    return locationsInfoDiv;
+
+};
+
+function createLocationsInfoDetails() {
+    let locationsInfoSpan1Text = `Whether strolling down the Champs-Élysées in Paris, perusing Fifth Avenue in New York, or enjoying Main Avenue in Scranton, you are sure to find one of our cozy eateries.`
+    const locationsInfoSpan1 = createEl.span('locationsInfoSpan1', locationsInfoSpan1Text);
+    const locationsInfoTextDiv = createEl.div('locationsInfoTextDiv');
+    locationsInfoTextDiv.appendChild(locationsInfoSpan1);
+    return locationsInfoTextDiv;
+    
+}
+
+function createLocationsInfoPhoto() {
+    const photo = new Image();
+    photo.src = restaurantInterior1;
+    photo.alt = 'Restaurant Interior';
+    const photoDiv = createEl.div('locationsPhotoDiv')
+    photoDiv.appendChild(photo);
+    return photoDiv;
+};
+
 export default function generateLandingPageContent() {
-    const landingPageContent = createDiv('landingPageContent');
-    landingPageContent.appendChild(createWelcomePhoto());
-    landingPageContent.appendChild(createInfoContainer());
+    const landingPageContent = createEl.div('landingPageContent');
+    landingPageContent.appendChild(createaboutUsDiv());
+    landingPageContent.appendChild(createLocationsInfoDiv());
     return landingPageContent;
 };

@@ -1,7 +1,5 @@
-import createDiv from './jsUtility.js'
+import createEl from './jsUtility.js'
 
 export default function generateContactContent() {
-    const contactContent = createDiv('contactContent');
-    contactContent.innerHTML = 'Contact Coming Soon';
-    return contactContent;
+    return createEl.div('contactContent', 'Contact Coming Soon');
 };

@@ -3,11 +3,11 @@ import './cssReset.css'
 import generateLandingPageContent from './landingPage.js';
 import generateMenuContent from './menu.js'
 import generateContactContent from './contact.js'
-import createDiv from './jsUtility.js'
+import createEl from './jsUtility.js'
 import logoIMG from './images/logo.png'
 
 function createHeader() {
-    const header = createDiv('header')
+    const header = createEl.div('header')
     header.appendChild(headerLogo());
     header.appendChild(headerTabs());
     return header;
@@ -16,7 +16,7 @@ function createHeader() {
 function headerLogo() {
     const logoImage = new Image();
     logoImage.src = logoIMG;
-    const headerLogoDiv = createDiv('headerLogo');
+    const headerLogoDiv = createEl.div('headerLogo');
     headerLogoDiv.appendChild(logoImage);
     return headerLogoDiv;
 }
@@ -29,7 +29,7 @@ function headerTabs() {
         contact: 'Contact Us',
     }
 
-    const headerTabs = createDiv('headerTabs');
+    const headerTabs = createEl.div('headerTabs');
     const tabsList = document.createElement('ul');
     tabsList.classList.add('tabsList')
 
@@ -83,14 +83,14 @@ function createFooter() {
         ul.appendChild(li);
     });
 
-    const footer = createDiv('footer');
+    const footer = createEl.div('footer');
     footer.appendChild(ul)
     
     return footer;
 }
 
 function createOrderButton() {
-    const button = createDiv('orderButton')
+    const button = createEl.div('orderButton')
     button.innerText = 'Order Now'
     return button;
 }
@@ -99,7 +99,7 @@ function createOrderButton() {
 
     const mainPageElements = [createHeader(), createBodyContainer(), createFooter(), createOrderButton()];
 
-    const mainContentContainer = createDiv('mainContentContainer');
+    const mainContentContainer = createEl.div('mainContentContainer');
 
     mainPageElements.forEach(element => {
         mainContentContainer.appendChild(element);    
