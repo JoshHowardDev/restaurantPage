@@ -4,6 +4,7 @@ import generateLandingPageContent from './landingPage.js';
 import generateMenuContent from './menu.js'
 import generateContactContent from './contact.js'
 import createDiv from './jsUtility.js'
+import logoIMG from './images/logo.png'
 
 function createHeader() {
     const header = createDiv('header')
@@ -13,8 +14,11 @@ function createHeader() {
 }
 
 function headerLogo() {
-    const headerLogo = createDiv('headerLogo', `Mike's Cereal Shack`);
-    return headerLogo;
+    const logoImage = new Image();
+    logoImage.src = logoIMG;
+    const headerLogoDiv = createDiv('headerLogo');
+    headerLogoDiv.appendChild(logoImage);
+    return headerLogoDiv;
 }
 
 function headerTabs() {
