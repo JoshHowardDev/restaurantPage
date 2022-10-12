@@ -70,12 +70,44 @@ function generateBodyContent(contentKey) {
     };
 }
 
+function createFooter() {
+
+    const footerLinks = ['Contact Us', 'About Us', 'News & Events', 'Franchising', 'Careers']
+
+    const ul = document.createElement('ul')
+    ul.classList.add('footerLinks')
+    footerLinks.forEach(footerLink => {
+        let li = document.createElement('li');
+        li.appendChild(document.createTextNode(footerLink));
+        li.classList.add('footerLink');
+        ul.appendChild(li);
+    });
+
+    const footer = createDiv('footer');
+    footer.appendChild(ul)
+    
+    return footer;
+}
+
+function createOrderButton() {
+    const button = createDiv('orderButton')
+    button.innerText = 'Order Now'
+    return button;
+}
+
 (function createPage() {
-    const mainContentContainer = document.createElement('div');
-    mainContentContainer.classList.add('mainContentContainer');
-    mainContentContainer.appendChild(createHeader());
-    mainContentContainer.appendChild(createBodyContainer());
+
+    const mainPageElements = [createHeader(), createBodyContainer(), createFooter(), createOrderButton()];
+
+    const mainContentContainer = createDiv('mainContentContainer');
+
+    mainPageElements.forEach(element => {
+        mainContentContainer.appendChild(element);    
+    });
+
     document.querySelector('body').appendChild(mainContentContainer);
+
     generateBodyContent('landingPage');
+
 })();
 
