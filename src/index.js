@@ -83,8 +83,11 @@ function createFooter() {
         ul.appendChild(li);
     });
 
+    const copyrightSpan = createEl.span('copyrightSpan', 'Great Scott Inc. Copyright © 2022');
+
     const footer = createEl.div('footer');
-    footer.appendChild(ul)
+    footer.appendChild(ul);
+    footer.appendChild(copyrightSpan);
     
     return footer;
 }

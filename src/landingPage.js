@@ -1,5 +1,6 @@
 import michaelEatingCereal from './images/michael-eating-cereal.png';
 import restaurantInterior1 from './images/restaurantInterior1.png'
+import peopleEatingIMG from './images/peopleEating.jpg'
 import createEl from './jsUtility.js';
 
 //About Us Info
@@ -52,6 +53,18 @@ function createWelcomePhoto() {
 }
 
 
+//Photo Divider
+
+function createPhotoDivider() {
+    const photo = new Image();
+    photo.src = peopleEatingIMG;
+    photo.alt = 'People Eating';
+    const photoDividerDiv = createEl.div('photoDivider');
+    photoDividerDiv.appendChild(photo);
+    return photoDividerDiv;
+}
+
+
 //Locations Info
 function createLocationsInfoDiv() {
     const locationsInfoDiv = createEl.div('locationsInfoDiv');
@@ -82,6 +95,7 @@ function createLocationsInfoPhoto() {
 export default function generateLandingPageContent() {
     const landingPageContent = createEl.div('landingPageContent');
     landingPageContent.appendChild(createaboutUsDiv());
+    landingPageContent.appendChild(createPhotoDivider());
     landingPageContent.appendChild(createLocationsInfoDiv());
     return landingPageContent;
 };
